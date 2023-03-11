@@ -2,10 +2,6 @@ module Admin
   class SessionsController < ApplicationController
     before_action :redirect_if_authenticated, only: %i[create new]
 
-    def show
-      redirect_to new_admin_session_path
-    end
-
     def new
     end
 
