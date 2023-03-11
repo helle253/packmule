@@ -1,4 +1,4 @@
-class Admin < ApplicationRecord
+class Administrator < ApplicationRecord
   include BCrypt
 
   def password
@@ -11,8 +11,8 @@ class Admin < ApplicationRecord
   end
 
   def login
-    @user = Admin.find_by(email: params[:email])
-    if @user.password == params[:password]
+    @administrator = Administrator.find_by(email: params[:email])
+    if @administrator.password == params[:password]
       give_token
     else
       redirect_to home_url

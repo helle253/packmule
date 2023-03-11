@@ -1,6 +1,6 @@
-class CreateAdmins < ActiveRecord::Migration[5.2]
+class CreateAdministrators < ActiveRecord::Migration[5.2]
   def change
-    create_table :admins do |t|
+    create_table :administrators do |t|
       t.string :email, null: false
       t.string :password_digest, null: false
       t.timestamps
