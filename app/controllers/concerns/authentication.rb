@@ -18,7 +18,9 @@ module Authentication
   end
 
   def redirect_if_authenticated
-    redirect_to new_admin_session_path, alert: "You are already logged in." if administrator_signed_in?
+    return unless administrator_signed_in?
+
+    redirect_to admin_dashboard_path, alert: 'You are already logged in.'
   end
 
   private

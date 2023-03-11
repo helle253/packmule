@@ -13,7 +13,7 @@ module Admin
       @administrator = Administrator.find_by(email: params[:administrator][:email].downcase)
       if @administrator&.authenticate(params[:administrator][:password])
         login @administrator
-        redirect_to new_admin_session_path, notice: 'Signed in.'
+        redirect_to admin_dashboard_path, notice: 'Signed in.'
       else
         flash_wrong_password
       end
@@ -21,7 +21,7 @@ module Admin
 
     def destroy
       logout
-      redirect_to new_admin_session_path, notice: 'Signed out.'
+      redirect_to homepage_path, notice: 'Signed out.'
     end
 
     def flash_wrong_password
