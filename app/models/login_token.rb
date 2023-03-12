@@ -10,4 +10,8 @@ class LoginToken < ApplicationRecord
   def self.destroy_expired!
     expired.each(&:destroy!)
   end
+
+  def expired?
+    Time.now.utc > created_at + ttl
+  end
 end
