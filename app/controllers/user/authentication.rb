@@ -6,9 +6,9 @@ module User
       before_action :current
     end
 
-    def login(login_token)
-      session[:current_user_email] = login_token.email
-      login_token.destroy!
+    def login(token)
+      session[:current_recipient_id] = Recipient.find_or_create_by!(email: token.email).id
+      token.destroy!
     end
 
     def redirect_if_authenticated
@@ -26,11 +26,12 @@ module User
     private
 
     def current
-      Current.user ||= session[:current_user_email]
+      Current.recipient ||= session[:current_recipient_id] &&
+                            Recipient.find_by(id: session[:current_recipient_id])
     end
 
     def signed_in?
-      Current.user.present?
+      Current.recipient.present?
     end
   end
 end
