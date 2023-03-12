@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resource :session, only: %i[new create]
     resource :dashboard, controller: 'dashboard', only: :show
+    resources :recipient, only: :index do
+      get '/page/:page', action: :index, on: :collection
+    end
   end
 
   namespace :user do

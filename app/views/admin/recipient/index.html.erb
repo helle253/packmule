@@ -1,0 +1,15 @@
+<h>Signed up users:</h>
+<table>
+  <tr>
+    <td>Email</td>
+    <td>Notes</td>
+  </tr>
+  <% @recipients.each do |r| %>
+    <tr>
+      <td><%= r.email %></td>
+      <td><%= r.notes %></td>
+    </tr>
+  <% end %>
+</table>
+  <%= paginate @recipients %>
+<p>This will one day be a button that lets you download all the emails in .csv</p>
