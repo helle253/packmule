@@ -11,13 +11,4 @@ class Administrator < ApplicationRecord
     @password = Password.create(new_password)
     self.password_digest = @password
   end
-
-  def login
-    @administrator = Administrator.find_by(email: params[:email])
-    if @administrator.password == params[:password]
-      give_token
-    else
-      redirect_to home_url
-    end
-  end
 end
