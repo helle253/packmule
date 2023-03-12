@@ -13,6 +13,11 @@ module Authentication
     session[:current_administrator_id] = administrator.id
   end
 
+  def user_login(login_token)
+    session[:current_user_email] = login_token.email
+    login_token.destroy!
+  end
+
   def logout
     reset_session
   end
