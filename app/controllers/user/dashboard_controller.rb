@@ -1,6 +1,6 @@
-module Admin
+module User
   class DashboardController < ApplicationController
-    include Admin::Authentication
+    include User::Authentication
 
     before_action :redirect_if_not_authenticated
 

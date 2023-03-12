@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   namespace :user do
     resource :login, controller: 'login', only: %i[new create]
     resources :login_token, only: :show
+    resource :dashboard, controller: 'dashboard', only: :show
   end
 
   resource :logout, controller: 'logout', only: :show
