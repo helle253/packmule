@@ -20,12 +20,19 @@ module Authentication
 
   def logout
     reset_session
+    redirect_to homepage_path
   end
 
   def redirect_if_admin_authenticated
     return unless administrator_signed_in?
 
     redirect_to admin_dashboard_path, alert: 'You are already logged in.'
+  end
+
+  def redirect_if_not_admin_authenticated
+    return if administrator_signed_in?
+
+    redirect_to new_admin_sessions_path, alert: 'You need to log in, sire.'
   end
 
   private

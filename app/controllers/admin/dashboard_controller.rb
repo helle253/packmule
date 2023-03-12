@@ -1,7 +1,8 @@
 module Admin
   class DashboardController < ApplicationController
+    redirect_if_not_admin_authenticated
+
     def show
-      "ADMIN HI"
     end
   end
 end
