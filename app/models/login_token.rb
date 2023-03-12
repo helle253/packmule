@@ -2,7 +2,7 @@ class LoginToken < ApplicationRecord
   ##
   # Scope for all stale confirmation tokens
   #
-  scope :expired, -> { where('? < ?', Time.now.utc, :created_at) }
+  scope :expired, -> { where('? < ?', Time.now.utc, created_at + ttl) }
 
   ##
   # Cleanup method for cleaning out expired tokens.
