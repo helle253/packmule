@@ -10,7 +10,7 @@ module Authentication
 
   def admin_login(administrator)
     reset_session
-    session[:current_administrator_id] = administrator.id
+    session[:current_administrator_email] = administrator.id
   end
 
   def user_login(login_token)
