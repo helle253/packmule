@@ -15,11 +15,6 @@ module Admin
       end
     end
 
-    def destroy
-      logout
-      redirect_to homepage_path, notice: 'Logged out.'
-    end
-
     def flash_wrong_password
       redirect_to new_admin_session_path, flash: { alert: 'Incorrect email or password.' }
     end

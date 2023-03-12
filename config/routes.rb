@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'homepage#show'
   resource :homepage, controller: 'homepage'
   namespace :admin do
-    resource :session, only: %i[new create destroy]
+    resource :session, only: %i[new create]
     resource :dashboard, controller: 'dashboard', only: :show
   end
 
@@ -11,4 +11,6 @@ Rails.application.routes.draw do
     resource :login, controller: 'login', only: %i[new create]
     resources :login_token, only: :show
   end
+
+  resource :logout, controller: 'logout', only: :show
 end
