@@ -1,6 +1,6 @@
 module Admin
   class SessionsController < ApplicationController
-    before_action :redirect_if_authenticated, only: %i[create new]
+    before_action :redirect_if_admin_authenticated, only: %i[create new]
 
     def new
     end

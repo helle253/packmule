@@ -17,7 +17,7 @@ module Authentication
     reset_session
   end
 
-  def redirect_if_authenticated
+  def redirect_if_admin_authenticated
     return unless administrator_signed_in?
 
     redirect_to admin_dashboard_path, alert: 'You are already logged in.'
