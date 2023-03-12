@@ -8,7 +8,7 @@ module Admin
     def create
       @administrator = Administrator.find_by(email: params[:administrator][:email].downcase)
       if @administrator&.authenticate(params[:administrator][:password])
-        login @administrator
+        admin_login @administrator
         redirect_to admin_dashboard_path, notice: 'Signed in.'
       else
         flash_wrong_password

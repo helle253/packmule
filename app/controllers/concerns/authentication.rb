@@ -8,7 +8,7 @@ module Authentication
     helper_method :administrator_signed_in?
   end
 
-  def login(administrator)
+  def admin_login(administrator)
     reset_session
     session[:current_administrator_id] = administrator.id
   end
