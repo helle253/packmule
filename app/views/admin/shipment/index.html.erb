@@ -1,0 +1,19 @@
+<h>Shipments:</h>
+
+<div><%= link_to "New", new_admin_shipment_path %></div>
+<table>
+  <tr>
+    <td>title</td>
+    <td>image</td>
+    <td>Actions</td>
+  </tr>
+  <% @shipments.each do |s| %>
+    <tr>
+      <td><%= s.title %></td>
+      <td> TODO </td>
+      <td><%= link_to "Edit", edit_admin_shipment_path(s) %>
+      <td><%= link_to "Delete", admin_shipment_path(s), method: :delete, data: { confirm: 'You sure?' } %>
+    </tr>
+  <% end %>
+</table>
+<%= paginate @shipments %>

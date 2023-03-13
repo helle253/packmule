@@ -4,6 +4,7 @@ module Admin
     before_action :redirect_if_not_authenticated
 
     def index
+      @shipments = Shipment.page params[:page]
     end
 
     def new
