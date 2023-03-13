@@ -19,5 +19,10 @@ module Admin
       @recipient.save!
       redirect_back(fallback_location: homepage_path, notice: 'User Updated')
     end
+
+    def destroy
+      Recipient.find(params[:id]).destroy!
+      redirect_back(fallback_location: homepage_path, notice: 'User Deleted')
+    end
   end
 end

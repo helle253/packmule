@@ -10,6 +10,7 @@
       <td><%= r.email %></td>
       <td><%= r.notes %></td>
       <td><%= link_to "Edit", edit_admin_recipient_path(r) %>
+      <td><%= link_to "Delete", admin_recipient_path(r), method: :delete, data: { confirm: 'You sure?' } %>
     </tr>
   <% end %>
 </table>
