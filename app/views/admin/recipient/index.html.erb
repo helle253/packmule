@@ -3,11 +3,13 @@
   <tr>
     <td>Email</td>
     <td>Notes</td>
+    <td>Actions</td>
   </tr>
   <% @recipients.each do |r| %>
     <tr>
       <td><%= r.email %></td>
       <td><%= r.notes %></td>
+      <td><%= link_to "Edit", edit_admin_recipient_path(r) %>
     </tr>
   <% end %>
 </table>

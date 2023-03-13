@@ -1,0 +1,10 @@
+<h>Edit User:</h>
+<%= form_with url: admin_recipient_path(@recipient), model: @recipient do |form| %>
+  <table>
+      <td><%= form.label :email, "Email" %></td>
+      <td><%= form.text_field :email, size: @recipient.email.length %></td>
+      <td><%= form.label :notes, "Notes" %></td>
+      <td><%= form.text_area :notes %></td>
+  </table>
+  <%= form.submit %>
+<% end %>
