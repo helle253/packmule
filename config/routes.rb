@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     resources :recipient, only: %i[index edit update destroy] do
       get '/page/:page', action: :index, on: :collection
     end
+    resources :shipment, only: %i[index create edit update destroy] do
+      get '/page/:page', action: :index, on: :collection
+    end
   end
 
   namespace :user do
