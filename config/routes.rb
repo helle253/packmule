@@ -19,5 +19,7 @@ Rails.application.routes.draw do
     resource :dashboard, controller: 'dashboard', only: :show
   end
 
+  resources :shipment, only: :index
+
   resource :logout, controller: 'logout', only: :show
 end
