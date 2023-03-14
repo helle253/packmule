@@ -12,7 +12,7 @@
       <td><%= s.title %></td>
       <td><%= image_tag url_for(s.image)%></td>
       <td><%= link_to "Edit", edit_admin_shipment_path(s) %>
-      <td><%= link_to "Delete", admin_shipment_path(s), method: :delete, data: { confirm: 'You sure?' } %>
+      <td><%= button_to "Delete", admin_shipment_path(s), method: :delete, form: { data: { turbo_confirm: "Are you sure?" } } %>
     </tr>
   <% end %>
 </table>
