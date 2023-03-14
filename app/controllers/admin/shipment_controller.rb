@@ -11,6 +11,8 @@ module Admin
     end
 
     def edit
+      @shipment = Shipment.
+                    find_by(id: params[:id])
     end
 
     def create
@@ -19,6 +21,10 @@ module Admin
     end
 
     def update
+      Shipment.
+        find_by(id: params[:id]).
+        update(params[:shipment].permit(:title, :image))
+      redirect_to admin_shipment_index_path, notice: 'Updated item'
     end
 
     def destroy

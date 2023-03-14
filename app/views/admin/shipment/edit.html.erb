@@ -1,1 +1,10 @@
-TODO
+<h>Update Shipment:</h>
+<%= form_with url: admin_shipment_path(@shipment), model: @shipment do |form| %>
+  <table>
+      <td><%= form.label :title, "Title" %></td>
+      <td><%= form.text_field :title %></td>
+      <td><%= form.label :image, "Image" %></td>
+      <td><%= form.file_field :image %></td>
+  </table>
+  <%= form.submit %>
+<% end %>
