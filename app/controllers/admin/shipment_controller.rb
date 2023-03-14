@@ -14,6 +14,8 @@ module Admin
     end
 
     def create
+      Shipment.create!(params.permit(:title, :image))
+      redirect_to admin_shipment_index_path, notice: 'Created new item'
     end
 
     def update
