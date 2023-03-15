@@ -11,7 +11,7 @@ module User
     end
 
     def update
-      Current.recipient.update!(params.require(:recipient).require(:allergen_ids))
+      Current.recipient.update!(params.require(:recipient).permit(allergen_ids: []))
       redirect_back(fallback_location: homepage_path, notice: 'Profile updated')
     end
   end
