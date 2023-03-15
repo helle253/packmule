@@ -23,7 +23,7 @@ module Admin
     def update
       Shipment.
         find_by(id: params[:id]).
-        update(params[:shipment].permit(:title, :image))
+        update(params.require(:shipment).permit(:title, :image))
       redirect_to admin_shipment_index_path, notice: 'Updated item'
     end
 
