@@ -8,7 +8,10 @@ test:
 
 amazon:
   service: S3
-  access_key_id: ""
-  secret_access_key: ""
-  bucket: ""
-  region: "" # e.g. 'us-east-1'
+  bucket: "packmule-assets"
+  region: 'us-east-1'
+  http_open_timeout: 60
+  http_read_timeout: 60
+  retry_limit: 3
+  upload:
+    server_side_encryption: "aws:kms" # 'aws:kms' or 'AES256'

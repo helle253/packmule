@@ -84,3 +84,6 @@ end
 
 ### Remove some dumb warnings smh
 gem 'net-http'
+
+## S3 for remote asset hosting
+gem 'aws-sdk-s3'
