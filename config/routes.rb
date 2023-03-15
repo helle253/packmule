@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resource :login, controller: 'login', only: %i[new create]
     resources :login_token, only: :show
     resource :dashboard, controller: 'dashboard', only: :show
+    resource :my_allergies, controller: 'allergies', only: %i[edit update]
   end
 
   resources :shipment, only: :index
