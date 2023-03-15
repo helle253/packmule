@@ -13,9 +13,9 @@ module Admin
 
     def update
       @recipient = Recipient.find(params[:id])
-      email, notes = params.require(:recipient).require(%i[email notes])
+      email, notes, allergen_ids = params.require(:recipient).require(%i[email notes allergen_ids])
 
-      @recipient.update!(email: email.downcase, notes: notes)
+      @recipient.update!(email: email.downcase, notes: notes, allergen_ids: allergen_ids)
       redirect_back(fallback_location: homepage_path, notice: 'User Updated')
     end
 
