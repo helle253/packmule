@@ -21,4 +21,4 @@
   <% end %>
 </table>
 <%= paginate @recipients %>
-<p>This will one day be a button that lets you download all the emails in .csv</p>
+<%= link_to "Export", admin_recipient_export_path(format: 'csv') %>
