@@ -9,9 +9,19 @@ test:
 amazon:
   service: S3
   bucket: "packmule-assets"
-  region: 'us-east-1'
+  region: <%= Rails.application.credentials.dig(:aws, :region) %>
+  access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
+  secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
   http_open_timeout: 60
   http_read_timeout: 60
   retry_limit: 3
   upload:
     server_side_encryption: "aws:kms" # 'aws:kms' or 'AES256'
+
+cloudflare:
+  service: S3
+  endpoint: https://<%= Rails.application.credentials.dig(:cloudflare, :account_id) %>.r2.cloudflarestorage.com
+  access_key_id: <%= Rails.application.credentials.dig(:cloudflare, :access_key_id) %>
+  secret_access_key: <%= Rails.application.credentials.dig(:cloudflare, :secret_access_key) %>
+  region: auto
+  bucket: <%= Rails.application.credentials.dig(:cloudflare, :bucket) %>

@@ -104,11 +104,4 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-
-  aws_config = {
-    region: Rails.application.credentials.aws[:region],
-    access_key_id: Rails.application.credentials.aws[:access_key_id],
-    secret_access_key: Rails.application.credentials.aws[:secret_access_key],
-  }
-  Aws.config.update(aws_config)
 end
