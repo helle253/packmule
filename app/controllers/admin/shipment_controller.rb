@@ -16,14 +16,14 @@ module Admin
     end
 
     def create
-      Shipment.create!(params.permit(%i[title image]))
+      Shipment.create!(params.permit(%i[title description image]))
       redirect_to admin_shipment_index_path, notice: 'Created new item'
     end
 
     def update
       Shipment.
         find_by(id: params[:id]).
-        update(params.require(:shipment).permit(:title, :image))
+        update(params.require(:shipment).permit(:title, :description, :image))
       redirect_to admin_shipment_index_path, notice: 'Updated item'
     end
 

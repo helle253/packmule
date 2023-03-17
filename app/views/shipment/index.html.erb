@@ -1,6 +1,7 @@
 <% @shipments.each do |s| %>
   <div>
     <td><%= s.title %></td>
+    <td><%= s.description %></td>
     <td><%= image_tag url_for(s.image)%></td>
   </div>
 <% end %>

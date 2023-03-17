@@ -4,12 +4,14 @@
 <table>
   <tr>
     <td>title</td>
+    <td>description</td>
     <td>image</td>
     <td>Actions</td>
   </tr>
   <% @shipments.each do |s| %>
     <tr>
       <td><%= s.title %></td>
+      <td><%= s.description %></td>
       <td><%= image_tag url_for(s.image)%></td>
       <td><%= link_to "Edit", edit_admin_shipment_path(s) %>
       <td><%= button_to "Delete", admin_shipment_path(s), method: :delete, form: { data: { turbo_confirm: "Are you sure?" } } %>
