@@ -1,0 +1,8 @@
+<div display=flex flex-direction=row>
+  <%= link_to "Shipments", shipment_index_path %>
+  <% if Current.recipient || Current.administrator %>
+    <%= link_to "Logout", logout_path %>
+  <% else %>
+    <%= link_to "Login", user_dashboard_path %>
+  <% end %>
+</div>

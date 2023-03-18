@@ -11,13 +11,12 @@
   </head>
 
   <body>
-    <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
+    <%= render 'layouts/flash_alerts' %>
+    <% if content_for?(:navbar) %>
+      <%= yield(:navbar) %>
+    <% else %>
+      <%= render 'layouts/navbar' %>
     <% end %>
-    <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
-
     <%= yield %>
   </body>
 </html>
