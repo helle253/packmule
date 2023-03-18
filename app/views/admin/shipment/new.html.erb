@@ -13,6 +13,10 @@
       <td><%= form.label :image, "Image" %></td>
       <td><%= form.file_field :image %></td>
     </tr>
+    <tr>
+      <td><%= form.label :fulfillment_date, "Fulfillment Date" %></td>
+      <td><%= form.date_field :fulfillment_date %></td>
+    </tr>
   </table>
   <%= form.submit %>
 <% end %>
