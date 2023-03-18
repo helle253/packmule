@@ -2,12 +2,18 @@
 <div><%= image_tag url_for(@shipment.image)%></div>
 <%= form_with url: admin_shipment_path(@shipment), model: @shipment do |form| %>
   <table>
+    <tr>
       <td><%= form.label :title, "Title" %></td>
       <td><%= form.text_field :title %></td>
+    </tr>
+    <tr>
       <td><%= form.label :description, "Description" %></td>
       <td><%= form.text_field :description %></td>
+    </tr>
+    <tr>
       <td><%= form.label :image, "Image" %></td>
       <td><%= form.file_field :image %></td>
+    </tr>
   </table>
   <%= form.submit %>
 <% end %>
