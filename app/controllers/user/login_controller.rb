@@ -1,6 +1,5 @@
 module User
   class LoginController < ApplicationController
-    include User::Authentication
     def new
     end
 

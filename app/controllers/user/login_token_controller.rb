@@ -1,7 +1,5 @@
 module User
   class LoginTokenController < ApplicationController
-    include User::Authentication
-
     def show
       token = LoginToken.find_by(id: params[:id])
       if token
