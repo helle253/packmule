@@ -1,0 +1,10 @@
+<h>Edit User:</h>
+<%= form_with url: admin_allergen_path, model: @allergen do |form| %>
+  <table>
+      <tr>
+        <td><%= form.label :title, "Title" %></td>
+        <td><%= form.text_field :title, size: @allergen.title.length + 3, value: @allergen.title %></td>
+      </tr>
+  </table>
+  <%= form.submit %>
+<% end %>

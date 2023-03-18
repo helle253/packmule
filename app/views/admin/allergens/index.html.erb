@@ -1,0 +1,19 @@
+<h>Signed up users:</h>
+
+<td><%= link_to "new", new_admin_allergen_path %>
+<table>
+  <tr>
+    <td>Title</td>
+    <td>Actions</td>
+  </tr>
+  <% @allergens.each do |a| %>
+    <tr>
+      <td><%= a.title %></td>
+      <td>
+        <%= link_to "Edit", edit_admin_allergen_path(a) %>
+        <%= link_to "Delete", admin_allergen_path(a), data: { "turbo-method": :delete, "turbo-confirm": 'You sure? This will remove it from all users as well' } %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<%= paginate @allergens %>

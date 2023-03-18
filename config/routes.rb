@@ -7,6 +7,9 @@ Rails.application.routes.draw do
     resource :dashboard, controller: 'dashboard', only: :show
     resource :credentials, controller: 'credentials', only: %i[edit update]
     resource :recipient_export, controller: 'recipient_export', only: %i[show]
+    resources :allergens, only: %i[index new create edit update destroy] do
+      get '/page/:page', action: :index, on: :collection
+    end
     resources :recipient, only: %i[index edit update destroy] do
       get '/page/:page', action: :index, on: :collection
     end

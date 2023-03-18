@@ -16,7 +16,7 @@
       </td>
       <td><%= r.notes %></td>
       <td><%= link_to "Edit", edit_admin_recipient_path(r) %>
-      <td><%= link_to "Delete", admin_recipient_path(r), method: :delete, data: { confirm: 'You sure?' } %>
+      <td><%= link_to "Delete", admin_recipient_path(r), data: { "turbo-method": :delete, "turbo-confirm": "you sure?" } %>
     </tr>
   <% end %>
 </table>
