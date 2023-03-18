@@ -1,9 +1,5 @@
 module Admin
-  class CredentialsController < ApplicationController
-    include Admin::Authentication
-
-    before_action :redirect_if_not_authenticated
-
+  class CredentialsController < Admin::BaseController
     def edit
       @administrator = Current.administrator
     end

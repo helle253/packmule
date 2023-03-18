@@ -1,9 +1,5 @@
 module Admin
-  class DashboardController < ApplicationController
-    include Admin::Authentication
-
-    before_action :redirect_if_not_authenticated
-
+  class DashboardController < Admin::BaseController
     def show
     end
   end

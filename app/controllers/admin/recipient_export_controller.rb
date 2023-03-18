@@ -1,7 +1,7 @@
 require 'csv'
 
 module Admin
-  class RecipientExportController < ApplicationController
+  class RecipientExportController < Admin::BaseController
     def show
       respond_to do |format|
         format.html

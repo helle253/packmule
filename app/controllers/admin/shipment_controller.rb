@@ -1,8 +1,5 @@
 module Admin
-  class ShipmentController < ApplicationController
-    include Admin::Authentication
-    before_action :redirect_if_not_authenticated
-
+  class ShipmentController < Admin::BaseController
     def index
       @shipments = Shipment.page params[:page]
     end
