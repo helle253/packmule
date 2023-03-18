@@ -3,6 +3,9 @@ class Administrator < ApplicationRecord
 
   has_secure_password
 
+  validates :password, confirmation: true
+  validates :password_confirmation, presence: true
+
   def password
     @password ||= Password.new(password_digest)
   end

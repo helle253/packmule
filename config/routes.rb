@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resource :session, only: %i[new create]
     resource :dashboard, controller: 'dashboard', only: :show
+    resource :credentials, controller: 'credentials', only: %i[edit update]
     resource :recipient_export, controller: 'recipient_export', only: %i[show]
     resources :recipient, only: %i[index edit update destroy] do
       get '/page/:page', action: :index, on: :collection
