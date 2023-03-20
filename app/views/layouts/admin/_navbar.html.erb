@@ -1,7 +1,17 @@
-<div display=flex flex-direction=row>
-  <%= link_to "Shipments", admin_shipment_index_path %>
-  <%= link_to "Mailing List Recipients", admin_recipient_index_path %>
-  <%= link_to "Allergens", admin_allergens_path %>
-  <%= link_to "Edit Credentials", edit_admin_credentials_path %>
-  <%= link_to "Logout", logout_path %>
-</div>
+<navbar>
+  <%= link_to admin_shipment_index_path do %>
+    <navbar_button>Edit Catalog</navbar_button>
+  <% end %>
+  <%= link_to admin_recipient_index_path do %>
+    <navbar_button>Mailing List Recipients</navbar_button>
+  <% end %>
+  <%= link_to admin_allergens_path do %>
+    <navbar_button>Allergens</navbar_button>
+  <% end %>
+  <%= link_to edit_admin_credentials_path do %>
+    <navbar_button>Edit Credentials</navbar_button>
+  <% end %>
+  <%= link_to logout_path do %>
+    <navbar_button>Logout</navbar_button>
+  <% end %>
+</navbar>
