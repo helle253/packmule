@@ -1,21 +1,29 @@
 <h>Edit User:</h>
 <%= form_with url: admin_recipient_path(@recipient), model: @recipient do |form| %>
   <table>
-      <tr><td><%= form.label :email, "Email" %></td></tr>
-      <tr><td><%= form.text_field :email, size: @recipient.email.length %></td></tr>
-      <tr><td>
-        <div> Allergies </div>
-        <table>
-          <%= form.collection_check_boxes :allergen_ids, Allergen.all, :id, :title do |a| %>
-            <tr>
-              <td><%= a.check_box %></td>
-              <td><%= a.label %></td>
-            </tr>
-          <% end %>
-        </table>
-      </td></tr>
-      <tr><td><%= form.label :notes, "Notes" %></td></tr>
-      <tr><td><%= form.text_area :notes %></td></tr>
+      <tr>
+        <td><%= form.label :email, "Email" %></td>
+        <td><%= form.text_field :email, size: @recipient.email.length %></td>
+      </tr>
+      <tr>
+        <td>
+          <div> Allergies </div>
+        </td>
+        <td>
+          <table>
+            <%= form.collection_check_boxes :allergen_ids, Allergen.all, :id, :title do |a| %>
+              <tr>
+                <td><%= a.check_box %></td>
+                <td><%= a.label %></td>
+              </tr>
+            <% end %>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td><%= form.label :notes, "Notes" %></td>
+        <td><%= form.text_area :notes %></td>
+      </tr>
   </table>
   <%= form.submit %>
 <% end %>
