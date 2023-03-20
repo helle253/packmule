@@ -1,7 +1,12 @@
-<% @shipments.each do |s| %>
-  <div>
-    <td><%= s.title %></td>
-    <td><%= s.description %></td>
-    <td><%= image_tag url_for(s.image)%></td>
-  </div>
-<% end %>
+<card_container>
+  <% @shipments.each do |s| %>
+      <shipment_card>
+        <%= link_to shipment_path(s) do %>
+          <%= image_tag url_for(s.image)%>
+        <% end %>
+        <shipment_card_title>
+          <%= s.title %><%= s.fulfillment_date.present? ? " (#{s.fulfillment_date})" : '' %>
+        </shipment_card_title>
+      </shipment_card>
+  <% end %>
+</card_container>

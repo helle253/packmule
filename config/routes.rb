@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     resource :my_allergies, controller: 'allergies', only: %i[edit update]
   end
 
-  resources :shipment, only: :index
+  resources :shipment, only: %i[index show]
 
   resource :logout, controller: 'logout', only: :show
 end
