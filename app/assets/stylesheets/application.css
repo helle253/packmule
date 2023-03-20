@@ -15,7 +15,7 @@
  */
 
 body {
-  background-image: url(<%= asset_path 'assets/backgrounds/bgturqstone.gif' %>);
+  background-image: url('/assets/images/backgrounds/bgturqstone.gif');
   color: white;
 }
 
