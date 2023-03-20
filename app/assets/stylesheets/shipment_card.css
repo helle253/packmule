@@ -1,5 +1,6 @@
 shipment_card {
   background-color: white;
+  color: black;
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -13,5 +14,6 @@ shipment_card {
 
 shipment_card_title {
   padding: 12px;
+  line-break: loose;
 }
 
