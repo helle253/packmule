@@ -1,8 +1,23 @@
-<div display=flex flex-direction=row>
-  <%= link_to "Shipments", shipment_index_path %>
-  <% if Current.recipient || Current.administrator %>
-    <%= link_to "Logout", logout_path %>
-  <% else %>
-    <%= link_to "Login", user_dashboard_path %>
+<navbar>
+  <%= link_to homepage_path do %>
+    <navbar_button>Home</navbar_button>
   <% end %>
-</div>
+  <%= link_to shipment_index_path do %>
+    <navbar_button>Catalog</navbar_button>
+  <% end %>
+  <%= link_to about_path do %>
+    <navbar_button>About</navbar_button>
+  <% end %>
+  <%= link_to contact_path do %>
+    <navbar_button>Contact</navbar_button>
+  <% end %>
+    <% if Current.recipient || Current.administrator %>
+      <%= link_to logout_path do %>
+        <navbar_button>Logout</navbar_button>
+      <% end %>
+    <% else %>
+      <%= link_to user_dashboard_path do %>
+        <navbar_button>Login</navbar_button>
+      <% end %>
+    <% end %>
+</navbar>
