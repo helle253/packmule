@@ -14,7 +14,7 @@
       <td><%= s.title %></td>
       <td><%= s.description || 'NO DESCRIPTION' %></td>
       <td><%= s.fulfillment_date || 'NO DATE' %></td>
-      <td><%= image_tag url_for(s.image)%></td>
+      <td><%= image_tag url_for(s.image.present? ? s.image : 'default.gif')%></td>
       <td>
         <%= link_to edit_admin_shipment_path(s) do %>
           <button>Edit</button>

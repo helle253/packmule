@@ -1,6 +1,6 @@
 <center>
   <shipment_card>
-    <%= image_tag url_for(@shipment.image)%>
+    <%= image_tag url_for(@shipment.image.present? ? @shipment.image : 'default.gif')%>
     <shipment_card_title><%= @shipment.title %></shipment_card_title>
   </shipment_card>
 </center>

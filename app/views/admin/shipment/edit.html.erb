@@ -1,5 +1,5 @@
 <h>Update Shipment:</h>
-<div><%= image_tag url_for(@shipment.image)%></div>
+<div><%= image_tag url_for(@shipment.image.present? ? @shipment.image : 'default.gif')%></div>
 <%= form_with url: admin_shipment_path(@shipment), model: @shipment do |form| %>
   <table>
     <tr>
