@@ -89,3 +89,5 @@ gem 'net-http'
 
 ## S3 for remote asset hosting
 gem 'aws-sdk-s3'
+
+gem "foreman", "~> 0.87.2"
