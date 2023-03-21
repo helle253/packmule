@@ -6,8 +6,8 @@
 @import url('text_styles.css');
 
 body {
-  background-image: url('bgturqstone.gif');
   color: white;
+  background-image: url('bgturqstone.gif');
 }
 
 a, a:link, a:visited, a:focus, a:hover, a:active {
