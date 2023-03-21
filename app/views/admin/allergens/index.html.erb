@@ -1,6 +1,7 @@
-<h>Allergens:</h>
 
-<td><%= link_to "new", new_admin_allergen_path %>
+<td><%= link_to new_admin_allergen_path do %>
+  <button>New</button>
+<% end %>
 <table>
   <tr>
     <td>Title</td>
@@ -10,8 +11,12 @@
     <tr>
       <td><%= a.title %></td>
       <td>
-        <%= link_to "Edit", edit_admin_allergen_path(a) %>
-        <%= link_to "Delete", admin_allergen_path(a), data: { "turbo-method": :delete, "turbo-confirm": 'You sure? This will remove it from all users as well' } %>
+        <%= link_to edit_admin_allergen_path(a) do %>
+          <button>Edit</button>
+        <% end %>
+        <%= link_to admin_allergen_path(a), data: { "turbo-method": :delete, "turbo-confirm": 'You sure? This will remove it from all users as well' } do %>
+          <button>Delete</button>
+        <% end %>
       </td>
     </tr>
   <% end %>
