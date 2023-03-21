@@ -16,11 +16,17 @@
       </td>
       <td><%= r.notes %></td>
       <td>
-        <%= link_to "Edit", edit_admin_recipient_path(r) %>
-        <%= link_to "Delete", admin_recipient_path(r), data: { "turbo-method": :delete, "turbo-confirm": "you sure?" } %>
+        <%= link_to edit_admin_recipient_path(r) do %>
+          <button>Edit</button>
+        <% end %>
+        <%= link_to admin_recipient_path(r), data: { "turbo-method": :delete, "turbo-confirm": "you sure?" } do %>
+          <button>Delete</button>
+        <% end %>
       </td>
     </tr>
   <% end %>
 </table>
 <%= paginate @recipients %>
-<%= link_to "Export", admin_recipient_export_path(format: 'csv') %>
+<%= link_to admin_recipient_export_path(format: 'csv') do %>
+  <button>Export</button>
+<% end %>
