@@ -10,7 +10,13 @@ module User
     end
 
     def update
-      Current.recipient.update!(params.require(:recipient).permit(allergen_ids: []))
+      allergen_ids = params.
+                       require(:recipient).
+                       require(:allergens).
+                       to_unsafe_h.
+                       map { |k, v| v == 'true' ? k : nil }.
+                       compact!
+      Current.recipient.update!(allergen_ids: allergen_ids)
       redirect_back(fallback_location: homepage_path, notice: 'Profile updated')
     end
   end
