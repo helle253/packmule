@@ -1,16 +1,20 @@
 <%= form_with url: user_my_allergies_path, model: @recipient, method: :put, data: { recipient_id: @recipient.id } do |form| %>
   <table>
-  <%= form.collection_check_boxes :dummy, Allergen.all, :id, :title do |a| %>
     <tr>
-      <td><%= a.label %></td>
-      <td><allergen-td>
-        <%= form.radio_button "allergens[#{a.value}]", true, checked: @recipient.allergens.include?(a.object) %>
-        <%= form.label '☹', style:'color:red' %>
-        <%= form.radio_button "allergens[#{a.value}]", false, checked: !@recipient.allergens.include?(a.object) %>
-        <%= form.label '☺', style:'color:green' %>
-      </allergen-td></td>
+      <td>Allergen</td>
+      <td>Are you allergic?</td>
     </tr>
-  <% end %>
+    <%= form.collection_check_boxes :dummy, Allergen.all, :id, :title do |a| %>
+      <tr>
+        <td><%= a.label %></td>
+        <td><allergen-td>
+          <%= form.radio_button "allergens[#{a.value}]", true, checked: @recipient.allergens.include?(a.object) %>
+          <%= form.label '☹', style:'color:red' %>
+          <%= form.radio_button "allergens[#{a.value}]", false, checked: !@recipient.allergens.include?(a.object) %>
+          <%= form.label '☺', style:'color:green' %>
+        </allergen-td></td>
+      </tr>
+    <% end %>
   </table>
   <%= form.submit "Dont kill me" %>
 <% end %>
