@@ -19,9 +19,7 @@
         <%= link_to edit_admin_shipment_path(s) do %>
           <button>Edit</button>
         <% end %>
-        <%= link_to admin_shipment_path(s), method: :delete, form: { data: { turbo_confirm: "Are you sure?" } }  do %>
-          <button>Delete</button>
-        <% end %>
+        <%= button_to 'Delete', admin_shipment_path(s), method: :delete, form: { data: { turbo_confirm: "Are you sure?" } } %>
       </td>
     </tr>
 <% end %>
