@@ -1,6 +1,6 @@
-<h>Shipments:</h>
-
-<div><%= button_to "New", new_admin_shipment_path %></div>
+<%= link_to new_admin_shipment_path do %>
+  <button>New</button>
+<% end %>
 <table>
   <tr>
     <td>title</td>
@@ -16,10 +16,14 @@
       <td><%= s.fulfillment_date || 'NO DATE' %></td>
       <td><%= image_tag url_for(s.image)%></td>
       <td>
-        <%= button_to "Edit", edit_admin_shipment_path(s) %>
-        <%= button_to "Delete", admin_shipment_path(s), method: :delete, form: { data: { turbo_confirm: "Are you sure?" } } %>
+        <%= link_to edit_admin_shipment_path(s) do %>
+          <button>Edit</button>
+        <% end %>
+        <%= link_to admin_shipment_path(s), method: :delete, form: { data: { turbo_confirm: "Are you sure?" } }  do %>
+          <button>Delete</button>
+        <% end %>
       </td>
     </tr>
-  <% end %>
+<% end %>
 </table>
 <%= paginate @shipments %>
