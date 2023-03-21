@@ -91,3 +91,5 @@ gem 'net-http'
 gem 'aws-sdk-s3'
 
 gem "foreman", "~> 0.87.2"
+
+gem "cssbundling-rails", "~> 1.1"
