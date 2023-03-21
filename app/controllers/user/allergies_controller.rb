@@ -15,7 +15,7 @@ module User
                        require(:allergens).
                        to_unsafe_h.
                        map { |k, v| v == 'true' ? k : nil }.
-                       compact!
+                       compact
       Current.recipient.update!(allergen_ids: allergen_ids)
       redirect_back(fallback_location: homepage_path, notice: 'Profile updated')
     end

@@ -4,13 +4,13 @@
       <td>Allergen</td>
       <td>Are you allergic?</td>
     </tr>
-    <%= form.collection_check_boxes :dummy, Allergen.all, :id, :title do |a| %>
+    <% Allergen.all.map do |a| %>
       <tr>
-        <td><%= a.label %></td>
+        <td><%= a.title %></td>
         <td><allergen-td>
-          <%= form.radio_button "allergens[#{a.value}]", true, checked: @recipient.allergens.include?(a.object) %>
+          <%= form.radio_button "allergens[#{a.id}]", true, checked: @recipient.allergens.include?(a) %>
           <%= form.label '☹', style:'color:red' %>
-          <%= form.radio_button "allergens[#{a.value}]", false, checked: !@recipient.allergens.include?(a.object) %>
+          <%= form.radio_button "allergens[#{a.id}]", false, checked: !@recipient.allergens.include?(a) %>
           <%= form.label '☺', style:'color:green' %>
         </allergen-td></td>
       </tr>
