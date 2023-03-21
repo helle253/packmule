@@ -1,6 +1,17 @@
 <homepage_container>
-  <div>Packmule Boulangerie</div>
-
+  <div style='padding:12px'>Packmule Boulangerie</div>
+ 
   <%= image_tag 'free-will.gif'%>
-  <p>Content will one day be here</p>
+  <homepage_shipments_container>
+    <%@orderable_shipments.each_with_index do |s, idx| %>
+      <homepage_shipment>
+        <div>
+          <div><%= s.fulfillment_date %></div>
+          <div><%= s.title %></div>
+        </div>
+        <%= image_tag "question-mark.gif", style:'height:100%;'%>
+        <%= button_to 'I want in', homepage_path, class: "homepage_order_shipment_button" %>
+      </homepage_shipment>
+    <% end %>
+  </homepage_shipments_container>
 </homepage_container>
