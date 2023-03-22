@@ -23,6 +23,7 @@ homepage_shipment {
   padding: 12px;
   display: flex;
   flex-direction: column;
+  text-align: center;
   align-items: center;
   justify-content: space-between;
 }
