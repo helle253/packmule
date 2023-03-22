@@ -3,13 +3,13 @@
  
   <%= image_tag 'free-will.gif'%>
   <homepage_shipments_container>
-    <%@orderable_shipments.each_with_index do |s, idx| %>
+    <%@orderable_shipments.each do |s, idx| %>
       <homepage_shipment>
         <div>
           <div><%= s.fulfillment_date %></div>
           <div><%= s.title %></div>
         </div>
-        <%= image_tag "question-mark.gif", style:'height:100%;'%>
+        <%= image_tag "question-#{Random.rand(5)}.gif", style:'height:100%;'%>
         <%=
           button_to s.recipients.include?(Current.recipient) ? "I'm in" : 'I want in',
           user_shipments_path(shipment_id: s.id),
