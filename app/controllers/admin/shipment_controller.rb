@@ -13,7 +13,7 @@ module Admin
     end
 
     def create
-      Shipment.create!(params.permit(%i[title description image fulfillment_date]))
+      Shipment.create!(params.permit(%i[title description image fulfillment_date order_limit]))
       redirect_to admin_shipment_index_path, notice: 'Created new item'
     end
 
