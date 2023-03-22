@@ -25,3 +25,19 @@
   </table>
   <%= form.submit %>
 <% end %>
+
+<div style='padding:24px'>
+  <div>Registered Recipients</div>
+  <table>
+    <tr>
+      <td>Email</td>
+      <td>Action</td>
+    </td>
+    <% @shipment.recipient_shipments.each do |rs| %>
+      <tr>
+        <td><%= rs.recipient.email %></td>
+        <td><%= button_to "Remove", admin_recipient_shipment_path(rs), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }%></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

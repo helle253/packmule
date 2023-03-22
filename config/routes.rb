@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :shipment, only: %i[index new create edit update destroy] do
       get '/page/:page', action: :index, on: :collection
     end
+    resources :recipient_shipments, only: :destroy
   end
 
   namespace :user do
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
     resources :login_token, only: :show
     resource :dashboard, controller: 'dashboard', only: :show
     resource :my_allergies, controller: 'allergies', only: %i[edit update]
+    resources :shipments, only: %i[index create]
   end
 
   resources :shipment, only: %i[index show]

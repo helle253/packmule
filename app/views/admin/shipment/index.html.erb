@@ -4,6 +4,7 @@
 <table>
   <tr>
     <td>title</td>
+    <td>Recipients</td>
     <td>description</td>
     <td>Order Limit</td>
     <td>date</td>
@@ -13,6 +14,11 @@
   <% @shipments.each do |s| %>
     <tr>
       <td><%= s.title %></td>
+      <td>
+        <% s.recipients.each do |r| %>
+          <div><%= r.email %>,</div>
+        <% end %>
+      </td>
       <td><%= s.description || 'NO DESCRIPTION' %></td>
       <td><%= s.order_limit %></td>
       <td><%= s.fulfillment_date || 'NO DATE' %></td>

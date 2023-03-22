@@ -10,7 +10,11 @@
           <div><%= s.title %></div>
         </div>
         <%= image_tag "question-mark.gif", style:'height:100%;'%>
-        <%= button_to 'I want in', homepage_path, class: "homepage_order_shipment_button" %>
+        <%=
+          button_to s.recipients.include?(Current.recipient) ? "I'm in" : 'I want in',
+          user_shipments_path(shipment_id: s.id),
+          class: "homepage_order_shipment_button",
+          disabled: s.recipients.include?(Current.recipient) %>
       </homepage_shipment>
     <% end %>
   </homepage_shipments_container>

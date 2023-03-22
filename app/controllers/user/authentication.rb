@@ -23,15 +23,15 @@ module User
       redirect_to new_user_login_path, alert: 'You need to log in, milord.'
     end
 
+    def signed_in?
+      Current.recipient.present?
+    end
+
     private
 
     def current
       Current.recipient ||= session[:current_recipient_id] &&
                             Recipient.find_by(id: session[:current_recipient_id])
-    end
-
-    def signed_in?
-      Current.recipient.present?
     end
   end
 end
