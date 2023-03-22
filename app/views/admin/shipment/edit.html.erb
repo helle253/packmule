@@ -18,6 +18,10 @@
       <td><%= form.label :fulfillment_date, "Fulfillment Date" %></td>
       <td><%= form.date_field :fulfillment_date %></td>
     </tr>
+    <tr>
+      <td><%= form.label :order_limit, "Order Limit" %></td>
+      <td><%= form.number_field :order_limit %></td>
+    </tr>
   </table>
   <%= form.submit %>
 <% end %>

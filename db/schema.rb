@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_18_150212) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_21_234417) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -70,6 +70,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_18_150212) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "recipient_shipments", force: :cascade do |t|
+    t.integer "recipient_id", null: false
+    t.integer "shipment_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "recipients", force: :cascade do |t|
     t.string "email", null: false
     t.string "notes", limit: 1024
@@ -83,6 +90,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_18_150212) do
     t.datetime "updated_at", null: false
     t.string "description"
     t.date "fulfillment_date"
+    t.integer "order_limit", default: 6
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

@@ -20,7 +20,11 @@ module Admin
     def update
       Shipment.
         find_by(id: params[:id]).
-        update(params.require(:shipment).permit(:title, :description, :image, :fulfillment_date))
+        update(
+          params.
+            require(:shipment).
+            permit(:title, :description, :image, :fulfillment_date, :order_limit),
+        )
       redirect_to admin_shipment_index_path, notice: 'Updated item'
     end
 

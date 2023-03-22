@@ -5,6 +5,7 @@
   <tr>
     <td>title</td>
     <td>description</td>
+    <td>Order Limit</td>
     <td>date</td>
     <td>image</td>
     <td>Actions</td>
@@ -13,6 +14,7 @@
     <tr>
       <td><%= s.title %></td>
       <td><%= s.description || 'NO DESCRIPTION' %></td>
+      <td><%= s.order_limit %></td>
       <td><%= s.fulfillment_date || 'NO DATE' %></td>
       <td><%= image_tag url_for(s.image.present? ? s.image : 'default.gif')%></td>
       <td>
