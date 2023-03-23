@@ -21,6 +21,7 @@ Layout/LineContinuationLeadingSpace:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
+    - 'config/routes.rb'
 Metrics/ClassLength:
   Max: 300
 Metrics/ModuleLength:
