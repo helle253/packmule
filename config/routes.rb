@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     resources :login_token, only: :show
     resource :dashboard, controller: 'dashboard', only: :show
     resource :my_allergies, controller: 'allergies', only: %i[edit update]
-    resources :shipments, only: %i[index create]
+    resources :shipments, only: :create
   end
 
   resources :shipment, only: %i[index show]

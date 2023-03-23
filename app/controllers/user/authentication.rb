@@ -7,8 +7,10 @@ module User
     end
 
     def login(token)
-      session[:current_recipient_id] = Recipient.find_or_create_by!(email: token.email).id
+      recipient = Recipient.find_or_create_by!(email: token.email)
+      session[:current_recipient_id] = recipient.id
       token.destroy!
+      recipient
     end
 
     def redirect_if_authenticated
