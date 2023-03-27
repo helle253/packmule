@@ -9,7 +9,7 @@
           <div><%= s.fulfillment_date %></div>
           <div><%= s.title %></div>
         </div>
-        <%= image_tag "question-#{Random.rand(6)}.gif", style:'height:50%;' %>
+        <%= image_tag "question-#{Random.rand(12)}.gif", style:'height:50%;' %>
         <%=
           button_to s.recipients.include?(Current.recipient) ? "I'm in" : 'I want in',
           user_shipments_path(shipment_id: s.id),
