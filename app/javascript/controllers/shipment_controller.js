@@ -15,15 +15,16 @@ export default class extends Controller {
     const rotations = 1                   // Number of rotations
     const gif_length = 6                  // Seconds
     const fps = 24
+    const height = 250;
+    const width = height;
 
     init().then(() => {
-      render();
-      _record();
+      startRecording();
       requestAnimationFrame(render);
     });
 
-    function _record() {
-      CanvasCapture.init(renderer.domElement, { showRecDot: true });
+    function startRecording() {
+      CanvasCapture.init(renderer.domElement);
       CanvasCapture.beginGIFRecord({
         name: "out-"+Date.now(),
         fps: fps,
@@ -41,14 +42,11 @@ export default class extends Controller {
       scene = new THREE.Scene();
       scene.add(new THREE.AmbientLight(0x404040))
     
-      renderer = new THREE.WebGLRenderer( { antialias: false } );
-      renderer.outputEncoding = THREE.sRGBEncoding;
+      renderer = new THREE.WebGLRenderer();
     
-      renderer.setPixelRatio( window.devicePixelRatio );
-      renderer.setSize( 500, 500 );
+      renderer.setSize( height, width );
 
       renderer.setAnimationLoop( render );
-      renderer.toneMappingNode = toneMapping( THREE.LinearToneMapping, 1 );
       renderer.outputEncoding = THREE.sRGBEncoding;
       container.appendChild( renderer.domElement );
 
