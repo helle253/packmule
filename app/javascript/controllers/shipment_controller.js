@@ -26,7 +26,7 @@ export default class extends Controller {
     function _record() {
       CanvasCapture.init(renderer.domElement, { showRecDot: true });
       CanvasCapture.beginGIFRecord({
-        name: "test",
+        name: "out-"+Date.now(),
         fps: fps,
       });
       const frames = gif_length * fps;
@@ -72,15 +72,10 @@ export default class extends Controller {
         camera.lookAt(mesh.position)
         scene.add( gltf.scene );
       });
-
     }
 
     function render() {
-      if (mesh?.rotation) {
-        mesh.rotation.y = rotation || Date.now() * (rotations / gif_length) / 1000;
-      } else{
-        console.log('No mesh')
-      }
+      if (mesh?.rotation) mesh.rotation.y = Date.now() / 1000;
       renderer.render( scene, camera );
     }
   }
