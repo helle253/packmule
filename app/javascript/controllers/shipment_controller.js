@@ -48,7 +48,7 @@ export default class extends Controller {
       container.appendChild( renderer.domElement );
     }
     
-    function render(callbackRequest) {
+    function render() {
       if (mesh?.rotation) {
         mesh.rotation.y = Date.now() / 1000;
       }
