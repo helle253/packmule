@@ -13,14 +13,13 @@ export default class extends Controller {
   record() {
     let camera, scene, renderer, mesh;
     const rotations = 1                   // Number of rotations
-    const gif_length = 2                  // Seconds
-    const fps = 30
-
-    let rotation = 0
+    const gif_length = 6                  // Seconds
+    const fps = 24
 
     init().then(() => {
       render();
       _record();
+      requestAnimationFrame(render);
     });
 
     function _record() {
@@ -29,15 +28,6 @@ export default class extends Controller {
         name: "out-"+Date.now(),
         fps: fps,
       });
-      const frames = gif_length * fps;
-      let frame = frames;
-      while (frame--) {
-        rotation = rotations * (frame / frames) * (Math.PI * 2)
-        requestAnimationFrame(render);
-        CanvasCapture.recordFrame();
-      }
-      rotation = null;
-      CanvasCapture.stopRecord();
     };
     
     async function init() {
@@ -74,9 +64,22 @@ export default class extends Controller {
       });
     }
 
+    let frameCtr = 1
     function render() {
-      if (mesh?.rotation) mesh.rotation.y = Date.now() / 1000;
+      if (!mesh) return;
+      const frames = gif_length * fps
+      const doneRecording = frameCtr > frames
+
+      if (!doneRecording) {
+        frameCtr+=1;
+        const rotation = (frameCtr / frames) * rotations * Math.PI * 2;
+        mesh.rotation.y = rotation
+      } else {
+        if (CanvasCapture.isRecording()) CanvasCapture.stopRecord();
+      }
+
       renderer.render( scene, camera );
+      if (CanvasCapture.isRecording()) CanvasCapture.recordFrame();
     }
   }
 }
