@@ -15,7 +15,7 @@ export default class extends Controller {
     const rotations = 1                   // Number of rotations
     const gif_length = 6                  // Seconds
     const fps = 24
-    const height = 250;
+    const height = 500;
     const width = height;
 
     init().then(() => {
