@@ -1,7 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 
 import * as THREE from 'three';
-import { toneMapping } from 'three/nodes';
 
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
@@ -12,9 +11,10 @@ export default class extends Controller {
 
   record() {
     let camera, scene, renderer, mesh;
-    const rotations = 1                   // Number of rotations
-    const gif_length = 6                  // Seconds
-    const fps = 24
+    const rotations = 1;  // Number of rotations
+    const gif_length = 12; // Seconds
+    const rps = (rotations / gif_length);
+    const fps = 60;
     const height = 500;
     const width = height;
 
@@ -25,8 +25,9 @@ export default class extends Controller {
 
     function startRecording() {
       CanvasCapture.init(renderer.domElement);
-      CanvasCapture.beginGIFRecord({
+      CanvasCapture.beginVideoRecord({
         name: "out-"+Date.now(),
+        format: CanvasCapture.WEBM,
         fps: fps,
       });
     };
@@ -63,7 +64,11 @@ export default class extends Controller {
     }
 
     let frameCtr = 1
+    let lastFrameTime = Date.now();
     function render() {
+      const delta = Date.now() - lastFrameTime;
+      lastFrameTime = Date.now();
+
       if (!mesh) return;
       const frames = gif_length * fps
       const doneRecording = frameCtr > frames
@@ -74,6 +79,7 @@ export default class extends Controller {
         mesh.rotation.y = rotation
       } else {
         if (CanvasCapture.isRecording()) CanvasCapture.stopRecord();
+        mesh.rotation.y += rps * (delta / 1000) * (Math.PI * 2);
       }
 
       renderer.render( scene, camera );
