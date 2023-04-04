@@ -11,4 +11,12 @@ class Shipment < ApplicationRecord
       where('? < fulfillment_date AND fulfillment_date IS NOT NULL', Time.zone.today + 2).
       select { |s| s.recipient_shipments.count < s.order_limit }
   end
+
+  def image_content?
+    image.content_type&.starts_with('image/')
+  end
+
+  def video_content?
+    image.content_type&.starts_with('video/')
+  end
 end
