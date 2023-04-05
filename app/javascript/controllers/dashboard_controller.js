@@ -32,13 +32,15 @@ export default class extends Controller {
 
     const loader = new GLTFLoader();
     loader.loadAsync(
-      // resource URL
       'https://res.cloudinary.com/dppe4mwtb/image/upload/v1679582450/birds-nest-tartlette_zjedcf.glb',
     ).then((gltf) => {
       this.mesh = gltf.scene.children[0]
       this.camera.lookAt(this.mesh.position)
       this.scene.add( gltf.scene );
     });
+
+    const element = document.getElementById("#upload-input");
+    element.addEventListener("change", () => { this.upload() });
   }
 
   loop(self) {
@@ -66,23 +68,30 @@ export default class extends Controller {
     if (CanvasCapture.isRecording()) CanvasCapture.recordFrame();
   }
 
-  record() {
+  upload() {
+    const file = document.getElementById('#upload-input').files[0];
+    const reader = new FileReader()
+    reader.onload = (event) => {
+      const arrayBuffer = event.target.result
       this.frameCtr = 1
       const loader = new GLTFLoader();
-      return loader.loadAsync(
-        // resource URL
-        'https://res.cloudinary.com/dppe4mwtb/image/upload/v1679582450/birds-nest-tartlette_zjedcf.glb',
-      ).then((gltf) => {
+      return loader.parseAsync(arrayBuffer).then((gltf) => {
         this.mesh = gltf.scene.children[0]
         this.camera.lookAt(this.mesh.position)
+        this.scene = new THREE.Scene();
+        this.scene.add(new THREE.AmbientLight(0x404040))
         this.scene.add( gltf.scene );
-      
-        CanvasCapture.init(this.renderer.domElement);
-        CanvasCapture.beginVideoRecord({
-          name: "out-"+Date.now(),
-          format: CanvasCapture.WEBM,
-          fps: this.fps,
-        });
-      });
+      })
+    };
+    reader.readAsArrayBuffer(file);
+  }
+
+  record() {
+    CanvasCapture.init(this.renderer.domElement);
+    CanvasCapture.beginVideoRecord({
+      name: "out-"+Date.now(),
+      format: CanvasCapture.WEBM,
+      fps: this.fps,
+    });
   }
 }

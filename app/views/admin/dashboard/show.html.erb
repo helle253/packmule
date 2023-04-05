@@ -4,5 +4,11 @@
 
 
 <div data-controller="dashboard">
-  <button data-action="click->dashboard#record">Record Webm</button>
+  <div><%= label_tag :image, "Upload" %></div>
+  <div><%= file_field_tag :image, id: '#upload-input' %></div>
+  <button
+    data-action="click->dashboard#record"
+  >
+    Record Webm
+  </button>
 </div>
