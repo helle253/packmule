@@ -39,8 +39,17 @@ export default class extends Controller {
       this.scene.add( gltf.scene );
     });
 
-    const element = document.getElementById("#upload-input");
-    element.addEventListener("change", () => { this.upload() });
+    document.getElementById("#upload-input").addEventListener("change", () => { this.upload() });
+
+    document.getElementById("camera-distance-input").addEventListener("change", (event) => {
+      const distance = event.target.value;
+      const position = new THREE.Vector3();
+      position.copy(this.camera.position)
+        .normalize()
+        .multiplyScalar(distance);
+      this.camera.position.set(...position.toArray());
+     });
+
   }
 
   loop(self) {

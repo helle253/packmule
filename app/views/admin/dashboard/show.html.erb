@@ -4,8 +4,18 @@
 
 
 <div data-controller="dashboard">
-  <div><%= label_tag :image, "Upload" %></div>
-  <div><%= file_field_tag :image, id: '#upload-input' %></div>
+  <div>
+    <div><%= label_tag :image, "Upload GLB" %></div>
+    <div><%= file_field_tag :image, id: '#upload-input' %></div>
+  </div>
+  <table style='margin:10px'>
+    <tr>
+      <td>
+        <div><%= label_tag :distance, "Camera Distance" %></div>
+        <div><%= range_field_tag "camera-distance-input", 3.35, min: "0.1", max: "20.0", step: ".01" %></div>
+      </td>
+    </tr>
+  </table>
   <button
     data-action="click->dashboard#record"
   >
