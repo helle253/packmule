@@ -1,12 +1,22 @@
 <card_container>
   <% @shipments.each do |s| %>
-      <shipment_card>
+      <div class='shipment-card'>
+        <div class='shipment-card-header'>
+          <div class='title-padding'>
+            <%= s.title %><%= s.fulfillment_date.present? ? " (#{s.fulfillment_date})" : '' %>
+          </div>
+        </div>
         <%= link_to shipment_path(s) do %>
-          <%= image_tag url_for(s.image.present? ? s.image : 'default.gif')%>
+          <div class='shipment-card-body'>
+            <% if s.video_content? %>
+              <%= video_tag url_for(s.image), autoplay: :autoplay, loop: :loop, muted: :muted%>
+            <% elsif s.image_content? %>
+              <%= image_tag url_for(s.image)%>
+            <% else %>
+              <%= image_tag url_for('default.gif')%>
+            <% end %>
+          </div>
         <% end %>
-        <shipment_card_title>
-          <%= s.title %><%= s.fulfillment_date.present? ? " (#{s.fulfillment_date})" : '' %>
-        </shipment_card_title>
-      </shipment_card>
+      </div>
   <% end %>
 </card_container>

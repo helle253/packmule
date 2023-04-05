@@ -1,8 +1,18 @@
 <center>
-  <shipment_card>
-    <%= image_tag url_for(@shipment.image.present? ? @shipment.image : 'default.gif')%>
-    <shipment_card_title><%= @shipment.title %></shipment_card_title>
-  </shipment_card>
+  <div class='shipment-card'>
+    <div class='shipment-card-header'>
+      <div class='title-padding'><%= @shipment.title %></div>
+    </div>
+    <div class='shipment-card-body'>
+      <% if @shipment.video_content? %>
+        <%= video_tag url_for(@shipment.image), autoplay: :autoplay, loop: :loop, muted: :muted%>
+      <% elsif s.image_content? %>
+        <%= image_tag url_for(@shipment.image)%>
+      <% else %>
+        <%= image_tag url_for('default.gif')%>
+      <% end %>
+    </div>
+  </div>
 </center>
 <div><%= @shipment.fulfillment_date %></div>
 <div><%= @shipment.description %></div>

@@ -1,19 +1,38 @@
-shipment_card {
-  background-color: white;
-  color: black;
+
+.shipment-card{
   align-items: center;
   display: flex;
   flex-direction: column;
   width: min-content;
   height: min-content;
-  margin: 1%;
-  padding-left: 1%;
-  padding-top: 1%;
-  padding-right: 1%;
+  margin: 6px;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+  border: solid;
+  border-width: 2px;
+  border-bottom-color: #424242;
+  border-right-color: #424242;
+  border-left-color: #fff;
+  border-top-color: #fff;
+  background: silver;
+  color:#212529;
 }
 
-shipment_card_title {
-  padding: 12px;
-  line-break: loose;
+.shipment-card-header{
+  min-width: 100%;
+  background: -webkit-linear-gradient(left,#08216b,#a5cef7);
+  display: flex;
+  color: #fff;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-top: 2px;
+  padding-bottom: 1px;
+  text-align: left;
 }
 
+.shipment-card-body{
+  padding: 4px;
+}
