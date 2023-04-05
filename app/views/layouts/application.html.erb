@@ -12,11 +12,13 @@
 
   <body>
     <%= render 'layouts/flash_alerts' %>
+    <body_content>
     <% if content_for?(:navbar) %>
       <%= yield(:navbar) %>
     <% else %>
       <%= render 'layouts/navbar' %>
     <% end %>
     <%= yield %>
+    </body_content>
   </body>
 </html>

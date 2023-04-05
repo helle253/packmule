@@ -4,18 +4,16 @@
   <%= image_tag 'free-will.gif'%>
   <homepage_shipments_container>
     <%@orderable_shipments.each do |s| %>
-      <homepage_shipment>
-        <div>
-          <div><%= s.fulfillment_date %></div>
-          <div><%= s.title %></div>
+      <div class='card'>
+        <div class='card-header'>
+          <div style='padding-left:4px'><%= s.fulfillment_date.strftime('%m-%d') %>  <%= s.title %></div>
         </div>
         <%= image_tag "question-#{Random.rand(12)}.gif", style:'height:50%;' %>
         <%=
           button_to s.recipients.include?(Current.recipient) ? "I'm in" : 'I want in',
           user_shipments_path(shipment_id: s.id),
-          class: "homepage_order_shipment_button",
           disabled: s.recipients.include?(Current.recipient) %>
-      </homepage_shipment>
+      </div>
     <% end %>
   </homepage_shipments_container>
 </homepage_container>

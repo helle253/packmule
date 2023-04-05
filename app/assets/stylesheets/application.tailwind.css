@@ -7,8 +7,13 @@
 @import url('text_styles.css');
 
 body {
-  color: white;
+  color: silver;
   background-image: url('bgturqstone.gif');
+}
+
+body_content {
+  display: flex;
+  flex-direction: column;
 }
 
 a, a:link, a:visited, a:focus, a:hover, a:active {
@@ -16,15 +21,57 @@ a, a:link, a:visited, a:focus, a:hover, a:active {
   text-decoration: none;
 }
 
-button {
-  display: block;
-  padding: 4px;
-  margin: 4px;
-  color: white;
-  background-color: rgba(123, 123, 123, 0.2);
-  box-shadow: 3px 8px 3px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+/*
+
+    Button styles
+
+*/
+button{
+  border-width: 2px;
+  border-style: outset;
+  border-color: buttonface;
+  border-right-color: #424242;
+  border-bottom-color: #424242;
+  background: silver;
+  color: black;
+  padding: 2px 2px;
+  margin: 2px;
+  border-radius: 1px;
+}
+button:hover {
+  border: 2px inset #fff;
+  background: silver;
+  color: #424242;
+  box-shadow: -1px -1px #000;
+}
+button:focus {
+  border: 2px inset #fff !important;
+  background: silver;
+  color: #424242;
+  box-shadow: -1px -1px #000 !important;
+  outline: 0 !important;
+  background: url(background.bmp);
+}
+button:active {
+  border: 2px inset #fff !important;
+  color: #424242;
+  box-shadow: -1px -1px #000 !important;
+  outline: 0 !important;
+  background: url(background.bmp);
 }
 
-button:hover {
-  box-shadow: inset 0 8px 4px 4px rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+button-primary{
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+button.disabled,button:disabled{
+  cursor: default;
+  background-color: silver;
+  border-style: outset;
+  border-color: buttonface;
+  border-right-color: #424242;
+  border-bottom-color: #424242;
+  color: grey;
+  text-shadow: 1px 1px #fff;
 }
