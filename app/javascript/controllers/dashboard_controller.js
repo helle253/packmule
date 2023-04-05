@@ -29,6 +29,16 @@ export default class extends Controller {
 
     this.lastFrameTime = Date.now();
     this.fps = 60;
+
+    const loader = new GLTFLoader();
+    loader.loadAsync(
+      // resource URL
+      'https://res.cloudinary.com/dppe4mwtb/image/upload/v1679582450/birds-nest-tartlette_zjedcf.glb',
+    ).then((gltf) => {
+      this.mesh = gltf.scene.children[0]
+      this.camera.lookAt(this.mesh.position)
+      this.scene.add( gltf.scene );
+    });
   }
 
   loop(self) {
@@ -41,7 +51,7 @@ export default class extends Controller {
 
     if (!self.mesh) return;
     const frames = gif_length * this.fps;
-    const doneRecording = this.frameCtr > frames
+    const doneRecording = !this.frameCtr || this.frameCtr > frames
 
     if (!doneRecording) {
       this.frameCtr+=1;
@@ -57,22 +67,22 @@ export default class extends Controller {
   }
 
   record() {
-    this.frameCtr = 1
-    const loader = new GLTFLoader();
-    return loader.loadAsync(
-      // resource URL
-      'https://res.cloudinary.com/dppe4mwtb/image/upload/v1679582450/birds-nest-tartlette_zjedcf.glb',
-    ).then((gltf) => {
-      this.mesh = gltf.scene.children[0]
-      this.camera.lookAt(this.mesh.position)
-      this.scene.add( gltf.scene );
-    
-      CanvasCapture.init(this.renderer.domElement);
-      CanvasCapture.beginVideoRecord({
-        name: "out-"+Date.now(),
-        format: CanvasCapture.WEBM,
-        fps: this.fps,
+      this.frameCtr = 1
+      const loader = new GLTFLoader();
+      return loader.loadAsync(
+        // resource URL
+        'https://res.cloudinary.com/dppe4mwtb/image/upload/v1679582450/birds-nest-tartlette_zjedcf.glb',
+      ).then((gltf) => {
+        this.mesh = gltf.scene.children[0]
+        this.camera.lookAt(this.mesh.position)
+        this.scene.add( gltf.scene );
+      
+        CanvasCapture.init(this.renderer.domElement);
+        CanvasCapture.beginVideoRecord({
+          name: "out-"+Date.now(),
+          format: CanvasCapture.WEBM,
+          fps: this.fps,
+        });
       });
-    });
   }
 }
