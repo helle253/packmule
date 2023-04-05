@@ -1,0 +1,11 @@
+<%= javascript_tag "function pause(id) { document.getElementById(id).pause(); }"%>
+<%= javascript_tag "function play(id) { document.getElementById(id).play(); }" %>
+
+<% if shipment.video_content? %>
+    <% id = "video-#{shipment.id}" %>
+    <%= video_tag url_for(shipment.image), onmouseover: "pause('#{id}')", onmouseout: "play('#{id}')", id: id, autoplay: :autoplay, loop: :loop, muted: :muted %>
+<% elsif s.image_content? %>
+  <%= image_tag url_for(shipment.image)%>
+<% else %>
+  <%= image_tag url_for('default.gif')%>
+<% end %>

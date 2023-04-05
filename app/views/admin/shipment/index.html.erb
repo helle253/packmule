@@ -22,13 +22,9 @@
       <td><%= s.description || 'NO DESCRIPTION' %></td>
       <td><%= s.order_limit %></td>
       <td><%= s.fulfillment_date || 'NO DATE' %></td>
-      <% if s.video_content? %>
-        <td><%= video_tag url_for(s.image), autoplay: :autoplay, loop: :loop, muted: :muted%></td>
-      <% elsif s.image_content? %>
-        <td><%= image_tag url_for(s.image)%></td>
-      <% else %>
-        <td><%= image_tag url_for('default.gif')%></td>
-      <% end %>
+      <td>
+        <%= render 'shared/multimedia', shipment: s %>
+      </td>
       <td>
         <%= link_to edit_admin_shipment_path(s) do %>
           <button>Edit</button>
