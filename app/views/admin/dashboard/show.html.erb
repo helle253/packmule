@@ -14,6 +14,10 @@
         <div><%= label_tag :distance, "Camera Distance" %></div>
         <div><%= range_field_tag "camera-distance-input", 3.35, min: "0.1", max: "20.0", step: ".01" %></div>
       </td>
+      <td>
+        <div><%= label_tag :angle, "Viewing Angle" %></div>
+        <div><%= range_field_tag "camera-angle-input", 0, min: -180, max: 180 %></div>
+      </td>
     </tr>
   </table>
   <button

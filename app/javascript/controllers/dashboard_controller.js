@@ -50,6 +50,19 @@ export default class extends Controller {
       this.camera.position.set(...position.toArray());
      });
 
+    document.getElementById("camera-angle-input").addEventListener("change", (event) => {
+      const distance = this.camera.position.length();
+      const rotation = event.target.value * Math.PI / 180;
+      this.camera.position.set(new THREE.Vector3(0,0,0));
+      this.camera.setRotationFromAxisAngle(
+        new THREE.Vector3(1,0,0),
+        rotation,
+      );
+      const lookDirection = new THREE.Vector3( 0, 0, - 1 );
+      const worldDirection = this.camera.getWorldDirection(lookDirection);
+      const newPosition = worldDirection.multiplyScalar(-1 * distance)
+      this.camera.position.set(...newPosition.toArray())
+     });
   }
 
   loop(self) {
