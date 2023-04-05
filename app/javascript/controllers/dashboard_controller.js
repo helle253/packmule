@@ -99,7 +99,6 @@ export default class extends Controller {
     const reader = new FileReader()
     reader.onload = (event) => {
       const arrayBuffer = event.target.result
-      this.frameCtr = 1
       const loader = new GLTFLoader();
       return loader.parseAsync(arrayBuffer).then((gltf) => {
         this.mesh = gltf.scene.children[0]
@@ -113,11 +112,13 @@ export default class extends Controller {
   }
 
   record() {
+    this.frameCtr = 1
     CanvasCapture.init(this.renderer.domElement);
     CanvasCapture.beginVideoRecord({
       name: "out-"+Date.now(),
       format: CanvasCapture.WEBM,
       fps: this.fps,
     });
+    requestAnimationFrame(() => { this.loop(self) });
   }
 }
