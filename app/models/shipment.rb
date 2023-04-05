@@ -13,10 +13,10 @@ class Shipment < ApplicationRecord
   end
 
   def image_content?
-    image.content_type&.starts_with('image/')
+    image.content_type&.starts_with?('image/')
   end
 
   def video_content?
-    image.content_type&.starts_with('video/')
+    image.content_type&.starts_with?('video/')
   end
 end
