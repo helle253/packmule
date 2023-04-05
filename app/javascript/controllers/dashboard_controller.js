@@ -29,6 +29,7 @@ export default class extends Controller {
 
     this.lastFrameTime = Date.now();
     this.fps = 60;
+    this.rps = .02
 
     const loader = new GLTFLoader();
     loader.loadAsync(
@@ -50,25 +51,28 @@ export default class extends Controller {
       this.camera.position.set(...position.toArray());
      });
 
-    document.getElementById("camera-angle-input").addEventListener("change", (event) => {
-      const distance = this.camera.position.length();
-      const rotation = event.target.value * Math.PI / 180;
-      this.camera.position.set(new THREE.Vector3(0,0,0));
-      this.camera.setRotationFromAxisAngle(
-        new THREE.Vector3(1,0,0),
-        rotation,
-      );
-      const lookDirection = new THREE.Vector3( 0, 0, - 1 );
-      const worldDirection = this.camera.getWorldDirection(lookDirection);
-      const newPosition = worldDirection.multiplyScalar(-1 * distance)
-      this.camera.position.set(...newPosition.toArray())
-     });
+     document.getElementById("camera-angle-input").addEventListener("change", (event) => {
+       const distance = this.camera.position.length();
+       const rotation = event.target.value * Math.PI / 180;
+       this.camera.position.set(new THREE.Vector3(0,0,0));
+       this.camera.setRotationFromAxisAngle(
+         new THREE.Vector3(1,0,0),
+         rotation,
+       );
+       const lookDirection = new THREE.Vector3( 0, 0, - 1 );
+       const worldDirection = this.camera.getWorldDirection(lookDirection);
+       const newPosition = worldDirection.multiplyScalar(-1 * distance)
+       this.camera.position.set(...newPosition.toArray())
+      });
+
+      document.getElementById("rotation-speed-input").addEventListener("change", (event) => {
+        this.rps = event.target.value;
+      });
   }
 
   loop(self) {
     const rotations = 1;  // Number of rotations
-    const gif_length = 12; // Seconds
-    const rps = (rotations / gif_length);
+    const gif_length = 1 / this.rps;
 
     const delta = Date.now() - self.lastFrameTime;
     self.lastFrameTime = Date.now();
@@ -83,7 +87,7 @@ export default class extends Controller {
       self.mesh.rotation.y = rotation
     } else {
       if (CanvasCapture.isRecording()) CanvasCapture.stopRecord();
-      self.mesh.rotation.y += rps * (delta / 1000) * (Math.PI * 2);
+      self.mesh.rotation.y += this.rps * (delta / 1000) * (Math.PI * 2);
     }
 
     self.renderer.render( self.scene, self.camera );
