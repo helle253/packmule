@@ -3,7 +3,7 @@
  
   <%= image_tag 'free-will.gif'%>
   <homepage_shipments_container>
-    <%@orderable_shipments.each do |s| %>
+    <%@upcoming_shipments.each do |s| %>
       <div class='card'>
         <div class='card-header'>
           <div style='padding-left:4px'><%= s.fulfillment_date.strftime('%m-%d') %> <%= s.title %></div>

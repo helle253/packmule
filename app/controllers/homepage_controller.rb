@@ -1,5 +1,5 @@
 class HomepageController < ApplicationController
   def show
-    @orderable_shipments = Shipment.orderable.sort_by(&:fulfillment_date).first(4)
+    @upcoming_shipments = Shipment.upcoming.sort_by(&:fulfillment_date).first(4)
   end
 end

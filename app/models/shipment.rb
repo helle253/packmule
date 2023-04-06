@@ -6,10 +6,9 @@ class Shipment < ApplicationRecord
 
   validates :order_limit, numericality: { less_than: 100 }
 
-  def self.orderable
+  def self.upcoming
     Shipment.
-      where('? < fulfillment_date AND fulfillment_date IS NOT NULL', Time.zone.today + 2).
-      select { |s| s.recipient_shipments.count < s.order_limit }
+      where('? < fulfillment_date AND fulfillment_date IS NOT NULL', Time.zone.today + 2)
   end
 
   def image_content?
